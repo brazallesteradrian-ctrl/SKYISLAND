@@ -49,6 +49,8 @@ The headers restrict resource origins, block framing, prevent MIME sniffing, lim
 
 The CSP allows the pinned Three.js/GSAP paths, Google Fonts, and the Draco decoder. Blob workers and WebAssembly are permitted for Draco. Inline styles remain allowed for GSAP animations; arbitrary inline JavaScript and JavaScript eval are blocked. The inline import map is authorized by its SHA-256 hash.
 
+`connect-src` must also allow `blob:`: Three.js ImageBitmapLoader fetches the GLB's embedded texture Blob URLs. Allowing Blob URLs only in `img-src` is insufficient and can leave the island white while external gallery photos still load.
+
 After changing the import map or security policy, run `node scripts/security.mjs`, then `node scripts/security.mjs --check`. No Node runtime or build step is needed on the deployed site.
 
 After deployment, check the document response headers in browser DevTools and confirm there are no CSP errors while loading the model, scrolling, and rotating the screen. Header configuration has been checked locally; live enforcement must be verified on your chosen host.

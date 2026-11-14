@@ -19,7 +19,8 @@ const policy = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src https://fonts.gstatic.com",
   "img-src 'self' blob: data:",
-  "connect-src 'self' https://cdn.jsdelivr.net/npm/three@0.164.1/ https://www.gstatic.com/draco/versioned/decoders/1.5.7/",
+  // GLTFLoader exposes embedded textures as Blob URLs; ImageBitmapLoader fetches them.
+  "connect-src 'self' blob: https://cdn.jsdelivr.net/npm/three@0.164.1/ https://www.gstatic.com/draco/versioned/decoders/1.5.7/",
   // Draco uses a Blob worker and WebAssembly for compressed model decoding.
   "worker-src 'self' blob:",
 ].join('; ');
