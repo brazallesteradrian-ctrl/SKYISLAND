@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; form-action 'none'; script-src 'self' 'sha256-6xKmfd//agoONHCxNd54xQwZf4BLDlywTmyN2Wlk92M=' 'wasm-unsafe-eval' https://cdn.jsdelivr.net/npm/three@0.164.1/ https://cdn.jsdelivr.net/npm/gsap@3.12.5/ https://www.gstatic.com/draco/versioned/decoders/1.5.7/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src 'self' https://cdn.jsdelivr.net/npm/three@0.164.1/ https://www.gstatic.com/draco/versioned/decoders/1.5.7/; worker-src 'self' blob:" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SKY ISLAND — 3D Experience</title>
+  <meta name="description" content="An immersive full-screen 3D scroll-driven island experience." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <!-- GSAP + ScrollTrigger + ScrollToPlugin -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+</head>
+
+<body class="loading">
+  <!-- Full screen WebGL canvas -->
+  <canvas id="webgl-canvas"></canvas>
+  <div id="flash-overlay"></div>
+
+  <a class="site-signature" href="https://letter4u.me/" aria-label="Visit letter4u.me">
+    <span class="signature-mark" aria-hidden="true">✧</span>
+    letter4u.me<span class="signature-arrow" aria-hidden="true">↗</span>
+  </a>
+
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-bar-wrap">
+        <div class="loader-bar" id="loader-bar"></div>
+      </div>
+      <div class="loader-pct" id="loader-pct">0%</div>
+    </div>
+  </div>
+
+  <!-- Scroll Container — creates scroll height for GSAP ScrollTrigger -->
+  <div id="scroll-container">
+
+    <!-- Section 1: Hero (pinned) -->
+    <section class="panel" id="panel-hero">
+      <div class="start-prompt">
+        <span class="start-eyebrow">A little world, just for you</span>
+        <p class="start-title">Scroll to start</p>
+        <span class="start-line" aria-hidden="true"></span>
+      </div>
+    </section>
+    <div class="scroll-spacer" aria-hidden="true"></div>
+
+    <!-- Section 2: Discover -->
+    <section class="panel" id="panel-discover">
+    </section>
+    <div class="scroll-spacer" aria-hidden="true"></div>
+
+    <!-- Section 3: Explore -->
+    <section class="panel" id="panel-explore">
+    </section>
+    <div class="scroll-spacer" aria-hidden="true"></div>
+
+    <!-- Section 4: Enter -->
+    <section class="panel" id="panel-enter">
+    </section>
+
+  </div>
+
+  <!-- Three.js via CDN (ES Module) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="./assets/js/main.js"></script>
+</body>
+
+</html>
